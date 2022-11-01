@@ -17,17 +17,29 @@ class _Page1ViewState extends State<Page1View> {
       Get.put(PublicEntriesController());
   TextEditingController searchTextcontroller = TextEditingController();
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //add listener for textcontroller
+    searchTextcontroller.addListener(() {_listener();});
+  }
+  _listener(){
+   setState(() {
+
+   });
+  }
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Stack(
         children: <Widget>[
-          (searchTextcontroller.text.trim().length > 0)
+          (searchTextcontroller.text.trim().split("").length > 0)
               ? Obx(() {
                   if (entriesController.isLoading.value) {
                     return Text("Loading");
                   } else {
-                    final List<Map> list =
-                        entriesController.entryDataList.value;
+                    print("nikku");
+                    List<Map> list = entriesController.entryDataList.value;
                     if (list.length > 0) {
                       return Expanded(
                         child: ListView.builder(
@@ -40,8 +52,10 @@ class _Page1ViewState extends State<Page1View> {
                                 return ApiDisplayWidget(data: data);
                               } else {
                                 String category = data['Category'];
-                                if (category.substring(0).contains(
-                                    searchTextcontroller.text.trim())) {
+                                if (category
+                                    .substring(0, category.length)
+                                    .contains(
+                                        searchTextcontroller.text.trim())) {
                                   return ApiDisplayWidget(data: data);
                                 } else {
                                   return SizedBox.shrink();
@@ -89,19 +103,8 @@ class _Page1ViewState extends State<Page1View> {
                             itemCount: list.length,
                             itemBuilder: (context, index) {
                               Map data = list[index];
-                              if (searchTextcontroller.text.trim().length < 0) {
-                                return ApiDisplayWidget(data: data);
-                              } else {
-                                String category = data['Category'];
-                                if (category
-                                    .substring(0, category.length)
-                                    .contains(
-                                        searchTextcontroller.text.trim())) {
-                                  return ApiDisplayWidget(data: data);
-                                } else {
-                                  return SizedBox.shrink();
-                                }
-                              }
+
+                              return ApiDisplayWidget(data: data);
                             }),
                       );
                     } else {
