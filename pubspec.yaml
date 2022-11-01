@@ -44,6 +44,7 @@ dependencies:
   connectivity_plus: ^2.0.2
   internet_connection_checker:
   webview_flutter: ^3.0.4
+  lottie:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,6 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - google_fonts/
+     - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,6 +1,7 @@
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:publicapi/common/Constants/UIConstants.dart';
 import 'package:publicapi/pages/HomePage/pages/page1/widgets/APIDisplayWidget.dart';
 
@@ -21,13 +22,15 @@ class _Page1ViewState extends State<Page1View> {
     // TODO: implement initState
     super.initState();
     //add listener for textcontroller
-    searchTextcontroller.addListener(() {_listener();});
+    searchTextcontroller.addListener(() {
+      _listener();
+    });
   }
-  _listener(){
-   setState(() {
 
-   });
+  _listener() {
+    setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,33 +39,34 @@ class _Page1ViewState extends State<Page1View> {
           (searchTextcontroller.text.trim().split("").length > 0)
               ? Obx(() {
                   if (entriesController.isLoading.value) {
-                    return Text("Loading");
+                    return Container(
+                      height: 80,
+                      width: 70,
+                      child: Lottie.asset('assets/loading.json'),
+                    );
                   } else {
                     print("nikku");
                     List<Map> list = entriesController.entryDataList.value;
                     if (list.length > 0) {
-                      return Expanded(
-                        child: ListView.builder(
-                            // physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: list.length,
-                            itemBuilder: (context, index) {
-                              Map data = list[index];
-                              if (searchTextcontroller.text.trim().length < 0) {
+                      return ListView.builder(
+                          // physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: list.length,
+                          itemBuilder: (context, index) {
+                            Map data = list[index];
+                            if (searchTextcontroller.text.trim().length < 0) {
+                              return ApiDisplayWidget(data: data);
+                            } else {
+                              String category = data['Category'];
+                              if (category
+                                  .substring(0, category.length)
+                                  .contains(searchTextcontroller.text.trim())) {
                                 return ApiDisplayWidget(data: data);
                               } else {
-                                String category = data['Category'];
-                                if (category
-                                    .substring(0, category.length)
-                                    .contains(
-                                        searchTextcontroller.text.trim())) {
-                                  return ApiDisplayWidget(data: data);
-                                } else {
-                                  return SizedBox.shrink();
-                                }
+                                return SizedBox.shrink();
                               }
-                            }),
-                      );
+                            }
+                          });
                     } else {
                       return Center(
                         child: Padding(
@@ -96,17 +100,15 @@ class _Page1ViewState extends State<Page1View> {
                   } else {
                     List<Map> list = entriesController.entryDataList.value;
                     if (list.length > 0) {
-                      return Expanded(
-                        child: ListView.builder(
-                            // physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: list.length,
-                            itemBuilder: (context, index) {
-                              Map data = list[index];
+                      return ListView.builder(
+                          // physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: list.length,
+                          itemBuilder: (context, index) {
+                            Map data = list[index];
 
-                              return ApiDisplayWidget(data: data);
-                            }),
-                      );
+                            return ApiDisplayWidget(data: data);
+                          });
                     } else {
                       return Center(
                         child: Padding(

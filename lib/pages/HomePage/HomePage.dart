@@ -16,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Page2View(),
     Page3View(),
   ];
-  int currentSelectedIndex = 1;
+  int currentSelectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
