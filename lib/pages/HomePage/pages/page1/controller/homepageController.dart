@@ -6,18 +6,12 @@ class PublicEntriesController extends GetxController {
   var isLoading = false.obs;
   var entryDataList = <Map>[].obs;
 
-  @override
-  void onInit() {
-    // fetchdata();
-    super.onInit();
-  }
-
   void fetchdata() async {
     isLoading(true);
     try {
-      var todos = await Dataservices.getEntries();
-      if (todos != null) {
-        entryDataList.value = todos.entries;
+      var dataReceived = await Dataservices.getEntries();
+      if (dataReceived != null) {
+        entryDataList.value = dataReceived.entries;
       }
     } catch (e) {
       isLoading(false);

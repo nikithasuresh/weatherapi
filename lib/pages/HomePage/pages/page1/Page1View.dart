@@ -17,6 +17,7 @@ class _Page1ViewState extends State<Page1View> {
   final PublicEntriesController entriesController =
       Get.put(PublicEntriesController());
   TextEditingController searchTextcontroller = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -47,7 +48,6 @@ class _Page1ViewState extends State<Page1View> {
                       ),
                     );
                   } else {
-                    print("nikku");
                     List<Map> list = entriesController.entryDataList.value;
                     if (list.length > 0) {
                       return ListView.builder(
@@ -114,7 +114,6 @@ class _Page1ViewState extends State<Page1View> {
                           itemCount: list.length,
                           itemBuilder: (context, index) {
                             Map data = list[index];
-
                             return ApiDisplayWidget(data: data);
                           });
                     } else {

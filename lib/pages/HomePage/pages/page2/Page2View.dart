@@ -27,19 +27,13 @@ class _Page2ViewState extends State<Page2View> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Good ${greeting()} 👋",
-                style: GoogleFonts.openSans(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Good ${greeting()} 👋",
+            style: GoogleFonts.openSans(
+                fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
         ),
         Expanded(
           child: StreamBuilder<InternetConnectionStatus>(
