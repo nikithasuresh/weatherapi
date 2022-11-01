@@ -39,10 +39,12 @@ class _Page1ViewState extends State<Page1View> {
           (searchTextcontroller.text.trim().split("").length > 0)
               ? Obx(() {
                   if (entriesController.isLoading.value) {
-                    return Container(
-                      height: 80,
-                      width: 70,
-                      child: Lottie.asset('assets/loading.json'),
+                    return Center(
+                      child: Container(
+                        height: 120,
+                        width: 120,
+                        child: Lottie.asset('assets/loading.json'),
+                      ),
                     );
                   } else {
                     print("nikku");
@@ -96,10 +98,12 @@ class _Page1ViewState extends State<Page1View> {
                 })
               : Obx(() {
                   if (entriesController.isLoading.value) {
-                    return Container(
-                      height: 80,
-                      width: 70,
-                      child: Lottie.asset('assets/loading.json'),
+                    return Center(
+                      child: Container(
+                        height: 120,
+                        width: 120,
+                        child: Lottie.asset('assets/loading.json'),
+                      ),
                     );
                   } else {
                     List<Map> list = entriesController.entryDataList.value;

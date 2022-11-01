@@ -24,9 +24,9 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: accetColor,
         animationDuration: const Duration(milliseconds: 300),
         items: const <Widget>[
-          Icon(Icons.api, size: 30),
-          Icon(Icons.private_connectivity_outlined, size: 30),
-          Icon(Icons.web, size: 30),
+          Icon(Icons.add_chart_outlined, size: 25),
+          Icon(Icons.network_cell, size: 25),
+          Icon(Icons.web, size: 25),
         ],
         onTap: (index) {
           setState(() {
