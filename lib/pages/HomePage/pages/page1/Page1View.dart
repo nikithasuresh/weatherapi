@@ -96,7 +96,11 @@ class _Page1ViewState extends State<Page1View> {
                 })
               : Obx(() {
                   if (entriesController.isLoading.value) {
-                    return Text("Loading");
+                    return Container(
+                      height: 80,
+                      width: 70,
+                      child: Lottie.asset('assets/loading.json'),
+                    );
                   } else {
                     List<Map> list = entriesController.entryDataList.value;
                     if (list.length > 0) {
