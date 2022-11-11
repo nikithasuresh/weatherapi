@@ -558,7 +558,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  //code for this
                   Row(
                     children: [
                       Padding(
