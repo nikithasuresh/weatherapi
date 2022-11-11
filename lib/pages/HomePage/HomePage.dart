@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void getDataFromCache() async {
     try {
       if (prefs.containsKey("Data1")) {
-        var data = jsonDecode(prefs.getString("Data") ?? "");
+        var data = jsonDecode(prefs.getString("Data1") ?? "");
         location = "${data['location']['name']} ${data['location']['region']}";
         Map current = data['current'];
         //Store data in cache
