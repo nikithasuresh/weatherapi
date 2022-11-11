@@ -499,7 +499,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     children: [
                       Text(
-                        "$condtion",
+                        "$condtion ",
                         style: GoogleFonts.varela(
                             fontSize: 12,
                             color: darkColor,
