@@ -167,6 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //get hourly data
       hourlyData = List<Map>.from(data['forecast']['forecastday'][0]["hour"]);
       weeklyData = List<Map>.from(data['forecast']['forecastday']);
+      //remove todays entry in the data for weekly forecast
       weeklyData.removeAt(0);
       // ------------
 
